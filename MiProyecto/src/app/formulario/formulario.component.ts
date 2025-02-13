@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.scss'],
 })
-export class FormularioComponent  implements OnInit {
+export class FormularioComponent {
+  pelicula = { nombre: '', anio: '', productor: '', casa: '', protagonista: '' };
+  listaPeliculas: any[] = [];
 
-  constructor() { }
-
-  ngOnInit() {}
-
+  agregarPelicula() {
+    this.listaPeliculas.push({ ...this.pelicula });
+    this.pelicula = { nombre: '', anio: '', productor: '', casa: '', protagonista: '' };
+  }
 }

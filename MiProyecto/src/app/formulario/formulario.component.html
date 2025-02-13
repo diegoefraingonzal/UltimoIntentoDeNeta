@@ -1,3 +1,53 @@
-<p>
-  formulario works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Formulario de Películas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #movieForm="ngForm" (ngSubmit)="agregarPelicula()">
+    <ion-item>
+      <ion-label position="floating">Nombre de Película</ion-label>
+      <ion-input type="text" [(ngModel)]="pelicula.nombre" name="nombre" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Año de Lanzamiento</ion-label>
+      <ion-input type="number" [(ngModel)]="pelicula.anio" name="anio" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nombre del Productor</ion-label>
+      <ion-input type="text" [(ngModel)]="pelicula.productor" name="productor" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Casa Productora</ion-label>
+      <ion-input type="text" [(ngModel)]="pelicula.casa" name="casa" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Protagonista</ion-label>
+      <ion-input type="text" [(ngModel)]="pelicula.protagonista" name="protagonista" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" [disabled]="movieForm.invalid">Agregar Película</ion-button>
+  </form>
+
+  <ion-table *ngIf="listaPeliculas.length > 0">
+    <ion-row>
+      <ion-col><strong>Nombre</strong></ion-col>
+      <ion-col><strong>Año</strong></ion-col>
+      <ion-col><strong>Productor</strong></ion-col>
+      <ion-col><strong>Casa</strong></ion-col>
+      <ion-col><strong>Protagonista</strong></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let pelicula of listaPeliculas">
+      <ion-col>{{ pelicula.nombre }}</ion-col>
+      <ion-col>{{ pelicula.anio }}</ion-col>
+      <ion-col>{{ pelicula.productor }}</ion-col>
+      <ion-col>{{ pelicula.casa }}</ion-col>
+      <ion-col>{{ pelicula.protagonista }}</ion-col>
+    </ion-row>
+  </ion-table>
+</ion-content>
